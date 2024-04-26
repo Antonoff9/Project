@@ -1,0 +1,150 @@
+mysql> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| students           |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> CREATE database works;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| students           |
+| sys                |
+| works              |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> USE works;
+Database changed
+mysql> CREATE TABLE books
+    -> (id INT(11) NOT NULL PRIMARY KEY,
+    -> author VARCHAR(50),
+    -> NameBook VARCHAR(100),
+    -> Genre VARCHAR(120) NULL);
+Query OK, 0 rows affected, 1 warning (0.29 sec)
+
+mysql> DESC books;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| id       | int          | NO   | PRI | NULL    |       |
+| author   | varchar(50)  | YES  |     | NULL    |       |
+| NameBook | varchar(100) | YES  |     | NULL    |       |
+| Genre    | varchar(120) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> INSERT INTO books VALUES (1, "George Orwell", "1984", "dystopia");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> INSERT INTO books VALUES (2, "H.G. Wells", "The Time Machine", "science fiction");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> INSERT INTO books VALUES (3, "Ray Bradbury", "Fahrenheit 451", "dystopia");
+Query OK, 1 row affected (0.09 sec)
+
+mysql> SELECT * FROM books;
++----+---------------+------------------+-----------------+
+| id | author        | NameBook         | Genre           |
++----+---------------+------------------+-----------------+
+|  1 | George Orwell | 1984             | dystopia        |
+|  2 | H.G. Wells    | The Time Machine | science fiction |
+|  3 | Ray Bradbury  | Fahrenheit 451   | dystopia        |
++----+---------------+------------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> DELETE FROM books WHERE NameBook="1984";
+Query OK, 1 row affected (0.08 sec)
+
+mysql> SELECT * FROM books;
++----+--------------+------------------+-----------------+
+| id | author       | NameBook         | Genre           |
++----+--------------+------------------+-----------------+
+|  2 | H.G. Wells   | The Time Machine | science fiction |
+|  3 | Ray Bradbury | Fahrenheit 451   | dystopia        |
++----+--------------+------------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> INSERT INTO books VALUES (1, "George Orwell", "1984", "dystopia");
+Query OK, 1 row affected (0.05 sec)
+
+mysql> UPDATE books SET NameBook="Fahrenheit 451" WHERE NameBook="451 degrees Fahrenheit";
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> SELECT * FROM books;
++----+---------------+------------------+-----------------+
+| id | author        | NameBook         | Genre           |
++----+---------------+------------------+-----------------+
+|  1 | George Orwell | 1984             | dystopia        |
+|  2 | H.G. Wells    | The Time Machine | science fiction |
+|  3 | Ray Bradbury  | Fahrenheit 451   | dystopia        |
++----+---------------+------------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> ALTER TABLE books DROP COLUMN id;
+Query OK, 3 rows affected (0.69 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM books;
++---------------+------------------+-----------------+
+| author        | NameBook         | Genre           |
++---------------+------------------+-----------------+
+| George Orwell | 1984             | dystopia        |
+| H.G. Wells    | The Time Machine | science fiction |
+| Ray Bradbury  | Fahrenheit 451   | dystopia        |
++---------------+------------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> ALTER TABLE books ADD COLUMN id INT AFTER Genre;
+Query OK, 0 rows affected (0.38 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM books;
++---------------+------------------+-----------------+------+
+| author        | NameBook         | Genre           | id   |
++---------------+------------------+-----------------+------+
+| George Orwell | 1984             | dystopia        | NULL |
+| H.G. Wells    | The Time Machine | science fiction | NULL |
+| Ray Bradbury  | Fahrenheit 451   | dystopia        | NULL |
++---------------+------------------+-----------------+------+
+3 rows in set (0.00 sec)
+
+Genre VARCHA' at line 4
+mysql> CREATE TABLE Films
+    -> (id INT(10) NOT NULL PRIMARY KEY,
+    -> NameFilm VARCHAR(50),
+    -> director VARCHAR(60),
+    -> Genre VARCHAR(70) NULL);
+Query OK, 0 rows affected, 1 warning (1.59 sec)
+
+mysql> INSERT INTO Films VALUES (1, "The War of the Worlds", "Steven Spilberg", "science fiction");
+Query OK, 1 row affected (0.66 sec)
+
+mysql> INSERT INTO Films VALUES (2, "Interstellar", "Crristopher Nolan", "science fiction");
+Query OK, 1 row affected (0.43 sec)
+
+mysql> INSERT INTO Films VALUES (3, "Quentin Tarantino", "Django", "western");
+Query OK, 1 row affected (0.42 sec)
+
+mysql> SELECT * FROM Films;
++----+-----------------------+-------------------+-----------------+
+| id | NameFilm              | director          | Genre           |
++----+-----------------------+-------------------+-----------------+
+|  1 | The War of the Worlds | Steven Spilberg   | science fiction |
+|  2 | Interstellar          | Crristopher Nolan | science fiction |
+|  3 | Quentin Tarantino     | Django            | western         |
++----+-----------------------+-------------------+-----------------+
+3 rows in set (0.00 sec)
