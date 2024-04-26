@@ -8,8 +8,6 @@ mysql> SELECT Genre AS Жанр FROM books;
 +-----------------+
 3 rows in set (0.00 sec)
 
-mysql> SELECT NameBook, Жанр FROM books WHERE NameBook = "1984";
-ERROR 1054 (42S22): Unknown column 'Жанр' in 'field list'
 mysql> SELECT * FROM books;
 +---------------+------------------+-----------------+------+
 | author        | NameBook         | Genre           | id   |
@@ -70,39 +68,15 @@ mysql> UPDATE books SET id = 1 WHERE author = "George Orwell";
 Query OK, 1 row affected (0.10 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
-mysql> UPDATE books SET id = 2 WHERE author = "H.G. Wellsl";
-Query OK, 0 rows affected (0.00 sec)
-Rows matched: 0  Changed: 0  Warnings: 0
-
 mysql> UPDATE books SET id = 3 WHERE author = "Ray Bradbury";
 Query OK, 1 row affected (0.06 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
-
-mysql> SELECT * FROM books;
-+---------------+------------------+-----------------+------+
-| author        | NameBook         | Genre           | id   |
-+---------------+------------------+-----------------+------+
-| George Orwell | 1984             | dystopia        |    1 |
-| H.G. Wells    | The Time Machine | science fiction | NULL |
-| Ray Bradbury  | Fahrenheit 451   | dystopia        |    3 |
-+---------------+------------------+-----------------+------+
-3 rows in set (0.00 sec)
 
 mysql> UPDATE books SET id = 2 WHERE author = "H.G. Wells";
 Query OK, 1 row affected (0.06 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
 mysql> SELECT * FROM books;
-+---------------+------------------+-----------------+------+
-| author        | NameBook         | Genre           | id   |
-+---------------+------------------+-----------------+------+
-| George Orwell | 1984             | dystopia        |    1 |
-| H.G. Wells    | The Time Machine | science fiction |    2 |
-| Ray Bradbury  | Fahrenheit 451   | dystopia        |    3 |
-+---------------+------------------+-----------------+------+
-3 rows in set (0.00 sec)
-
-mysql> SELECT * FROM books ORDER BY author;
 +---------------+------------------+-----------------+------+
 | author        | NameBook         | Genre           | id   |
 +---------------+------------------+-----------------+------+
