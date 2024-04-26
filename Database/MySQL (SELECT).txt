@@ -1,0 +1,165 @@
+mysql> SELECT Genre AS Жанр FROM books;
++-----------------+
+| Жанр            |
++-----------------+
+| dystopia        |
+| science fiction |
+| dystopia        |
++-----------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT NameBook, Жанр FROM books WHERE NameBook = "1984";
+ERROR 1054 (42S22): Unknown column 'Жанр' in 'field list'
+mysql> SELECT * FROM books;
++---------------+------------------+-----------------+------+
+| author        | NameBook         | Genre           | id   |
++---------------+------------------+-----------------+------+
+| George Orwell | 1984             | dystopia        | NULL |
+| H.G. Wells    | The Time Machine | science fiction | NULL |
+| Ray Bradbury  | Fahrenheit 451   | dystopia        | NULL |
++---------------+------------------+-----------------+------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT NAMEBook, Genre FROM books WHERE NameBook = "1984";
++----------+----------+
+| NAMEBook | Genre    |
++----------+----------+
+| 1984     | dystopia |
++----------+----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM books WHERE author = "Ray Bradbury" OR Genre = "dystopia";
++---------------+----------------+----------+------+
+| author        | NameBook       | Genre    | id   |
++---------------+----------------+----------+------+
+| George Orwell | 1984           | dystopia | NULL |
+| Ray Bradbury  | Fahrenheit 451 | dystopia | NULL |
++---------------+----------------+----------+------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM books WHERE author LIKE "_y";
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM books WHERE author LIKE "_e%";
++---------------+----------+----------+------+
+| author        | NameBook | Genre    | id   |
++---------------+----------+----------+------+
+| George Orwell | 1984     | dystopia | NULL |
++---------------+----------+----------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM books WHERE (Genre = "science fiction" OR author = "H.G. Wells") AND NameBook = "The Time Machine";
++------------+------------------+-----------------+------+
+| author     | NameBook         | Genre           | id   |
++------------+------------------+-----------------+------+
+| H.G. Wells | The Time Machine | science fiction | NULL |
++------------+------------------+-----------------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM books;
++---------------+------------------+-----------------+------+
+| author        | NameBook         | Genre           | id   |
++---------------+------------------+-----------------+------+
+| George Orwell | 1984             | dystopia        | NULL |
+| H.G. Wells    | The Time Machine | science fiction | NULL |
+| Ray Bradbury  | Fahrenheit 451   | dystopia        | NULL |
++---------------+------------------+-----------------+------+
+3 rows in set (0.00 sec)
+
+mysql> UPDATE books SET id = 1 WHERE author = "George Orwell";
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE books SET id = 2 WHERE author = "H.G. Wellsl";
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> UPDATE books SET id = 3 WHERE author = "Ray Bradbury";
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM books;
++---------------+------------------+-----------------+------+
+| author        | NameBook         | Genre           | id   |
++---------------+------------------+-----------------+------+
+| George Orwell | 1984             | dystopia        |    1 |
+| H.G. Wells    | The Time Machine | science fiction | NULL |
+| Ray Bradbury  | Fahrenheit 451   | dystopia        |    3 |
++---------------+------------------+-----------------+------+
+3 rows in set (0.00 sec)
+
+mysql> UPDATE books SET id = 2 WHERE author = "H.G. Wells";
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM books;
++---------------+------------------+-----------------+------+
+| author        | NameBook         | Genre           | id   |
++---------------+------------------+-----------------+------+
+| George Orwell | 1984             | dystopia        |    1 |
+| H.G. Wells    | The Time Machine | science fiction |    2 |
+| Ray Bradbury  | Fahrenheit 451   | dystopia        |    3 |
++---------------+------------------+-----------------+------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM books ORDER BY author;
++---------------+------------------+-----------------+------+
+| author        | NameBook         | Genre           | id   |
++---------------+------------------+-----------------+------+
+| George Orwell | 1984             | dystopia        |    1 |
+| H.G. Wells    | The Time Machine | science fiction |    2 |
+| Ray Bradbury  | Fahrenheit 451   | dystopia        |    3 |
++---------------+------------------+-----------------+------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM books ORDER BY NameBook;
++---------------+------------------+-----------------+------+
+| author        | NameBook         | Genre           | id   |
++---------------+------------------+-----------------+------+
+| George Orwell | 1984             | dystopia        |    1 |
+| Ray Bradbury  | Fahrenheit 451   | dystopia        |    3 |
+| H.G. Wells    | The Time Machine | science fiction |    2 |
++---------------+------------------+-----------------+------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM books ORDER BY NameBook DESC;
++---------------+------------------+-----------------+------+
+| author        | NameBook         | Genre           | id   |
++---------------+------------------+-----------------+------+
+| H.G. Wells    | The Time Machine | science fiction |    2 |
+| Ray Bradbury  | Fahrenheit 451   | dystopia        |    3 |
+| George Orwell | 1984             | dystopia        |    1 |
++---------------+------------------+-----------------+------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT AVG(id) FROM books;
++---------+
+| AVG(id) |
++---------+
+|  2.0000 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SUM(id) FROM books;
++---------+
+| SUM(id) |
++---------+
+|       6 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MIN(id) AS min_id FROM books;
++--------+
+| min_id |
++--------+
+|      1 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(author) FROM books;
++---------------+
+| COUNT(author) |
++---------------+
+|             3 |
++---------------+
+1 row in set (0.00 sec)
