@@ -7,8 +7,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 LINK = "https://единый-визовый-центр.рф"
 
 USERS = [
-    {'name': "Александра",     'tel': "+70000000000"},
-    {'name': "Николай",        'tel': "+70000000000"},
+    {'name': "ИМЯ",     'tel': "+70000000000"},
+    {'name': "ИМЯ",        'tel': "+70000000000"},
    
 ]
 
