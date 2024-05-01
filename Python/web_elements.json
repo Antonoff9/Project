@@ -1,0 +1,15 @@
+{
+    "main_page": {
+        "number_field":     "//div[@class=\"single_input\"]/label/input",
+        "answer_no_but":    "//div[@class=\"main_callback\"]//div[@class=\"radio_fields\"]//input[@value=\"1\"]",
+        "callback_but":     "//div[@class=\"main_callback\"]//a[@class=\"mainform_btn btn_send\"]",
+        "success_msg":      "//div[@class=\"main_callback\"]//div[@class=\"single_input\"]//span[@class=\"success_msg\"]",
+        
+        "callback_frame":   "//iframe[@name=\"CalltouchWidgetFrame\"]",
+        "call_button":      "//div[@id=\"Calltouch-widget-container\"]//button",
+        "name_field_fr":    "/html/body/div/div/div[2]/div[2]/div[2]/div/div[3]/div/input",
+        "tel_field_fr":     "/html/body/div/div/div[2]/div[2]/div[2]/div/div[4]/div/input",
+        "submit_but":       "/html/body/div/div/div[2]/div[2]/div[2]/div/div[6]/div",
+        "accept":           "/html/body/div/div/div/div"
+    }
+}
